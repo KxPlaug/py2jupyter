@@ -19,9 +19,15 @@ def fill_cell(filename: str, content: str) -> str:
     return cell_template
 
 
+def replace_tab_with_space(content: str) -> str:
+    content = content.replace('\t', '    ')
+    return content
+
+
 def append_file_content(file_path: str, template_file: Dict[str, Any]) -> Dict[str, Any]:
     file = open(file_path, 'r', encoding='utf-8')
     file_content = "".join(file.readlines())
+    file_content = replace_tab_with_space(file_content)
     cell_content = fill_cell(os.path.basename(file_path), file_content)
     template_file['cells'].append(cell_content)
     return template_file
