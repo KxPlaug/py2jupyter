@@ -20,7 +20,7 @@ def fill_cell(filename: str, content: str) -> str:
 
 
 def append_file_content(file_path: str, template_file: Dict[str, Any]) -> Dict[str, Any]:
-    file = open(file_path, 'r')
+    file = open(file_path, 'r',encoding='utf-8')
     file_content = "".join(file.readlines())
     cell_content = fill_cell(os.path.basename(file_path), file_content)
     template_file['cells'].append(cell_content)
